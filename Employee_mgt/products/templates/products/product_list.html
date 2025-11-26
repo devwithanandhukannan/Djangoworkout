@@ -1,0 +1,26 @@
+<!-- products/templates/products/product_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Product List</h1>
+    <a href="{% url 'product_create' %}" class="btn btn-primary mb-3">Add New Product</a>
+
+    {% if products %}
+        <div class="list-group">
+            {% for product in products %}
+                <a href="{% url 'product_detail' product.pk %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ product.name }}</h5>
+                        <small class="text-muted">Added: {{ product.created_at|date:"M d, Y" }}</small>
+                    </div>
+                    <p class="mb-1">{{ product.description|truncatechars:100 }}</p>
+                    <small>Price: ${{ product.price }}</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="alert alert-info">No products found. Why not <a href="{% url 'product_create' %}">add one</a>?</p>
+    {% endif %}
+{% endblock %}

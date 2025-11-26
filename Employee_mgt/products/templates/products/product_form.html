@@ -1,0 +1,28 @@
+<!-- products/templates/products/product_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">{{ title }}</h1>
+
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <div class="invalid-feedback d-block">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success mt-3">Save Product</button>
+        <a href="{% if product %}{% url 'product_detail' product.pk %}{% else %}{% url 'product_list' %}{% endif %}" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+{% endblock %}

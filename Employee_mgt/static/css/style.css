@@ -1,0 +1,41 @@
+/* my_django_crud/static/css/style.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 960px;
+    margin-top: 20px;
+}
+
+.list-group-item {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Custom form styling if needed, otherwise Bootstrap's will apply */
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+}
+
+.invalid-feedback {
+    display: block; /* Ensure errors are visible */
+}
+
+/* Alert messages */
+.alert {
+    margin-top: 15px;
+}
