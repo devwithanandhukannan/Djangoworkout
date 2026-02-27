@@ -5,7 +5,7 @@ class TaskSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Course
-        fields = "__all__"
+        fields = ["name","isAvailable","price"]
     
     def validate_price(self, value):
         if(value<100):
